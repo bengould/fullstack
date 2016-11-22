@@ -22,6 +22,27 @@
 			<link rel="stylesheet" href="css/style-xlarge.css" />
 		</noscript>
         
+        <!-- Stripe -->
+        <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+        
+        <script type="text/javascript">
+            Stripe.setPublishableKey('pk_test_Y1g3yAfvMCCM3UnBy4Uaadwj');
+
+            $(function() {
+              var $form = $('#payment-form');
+              $form.submit(function(event) {
+                // Disable the submit button to prevent repeated clicks:
+                $form.find('.submit').prop('disabled', true);
+
+                // Request a token from Stripe:
+                Stripe.card.createToken($form, stripeResponseHandler);
+
+                // Prevent the form from being submitted:
+                return false;
+              });
+            });
+
+        </script>
         
         <!-- Google Analytics -->
         <script>
@@ -64,10 +85,60 @@
 			<section id="main" class="wrapper style1">
 				<header class="major">
                     <h2>Donate</h2>
-                    <h3>Use the button below to donate - but first, provide your employer and occupation</h3>
 				</header>
 				<div class="container">
                     <div class="row">
+                        <div class="12u">
+                            <div class="6u" style="margin:auto">
+                                <form action="/your-charge-code" method="POST" id="payment-form">
+                                    <span class="payment-errors"></span>
+
+                                    <div class="form-row">
+                                        <label>
+                                            <span>Card Number</span>
+                                            <input type="text" size="20" data-stripe="number">
+                                        </label>
+                                    </div>
+
+                                    <div class="form-row" style="display:block">
+                                        <div class="2u">
+                                            <label>
+                                                <span>Expiration (MM)</span>
+                                                <input type="text" size="2" data-stripe="exp_month">
+                                            </label>
+                                        </div>
+                                        <div class="2u">
+                                            <label>
+                                                <span> Expiration (YY) </span>
+                                                <input type="text" size="2" data-stripe="exp_year">
+                                            </label>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <label>
+                                            <span>CVC</span>
+                                            <input type="text" size="4" data-stripe="cvc">
+                                        </label>
+                                    </div>
+
+                                    <div class="form-row">
+                                        <label>
+                                            <span>Billing Zip</span>
+                                            <input type="text" size="6" data-stripe="address_zip">
+                                        </label>
+                                    </div>
+
+                                    <input type="submit" class="submit" value="Submit Payment">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                    
+                    
+                    <div class="row" style="display:none">
                             <div class="6u">
                                 <p>Our payment processor requires you to enter your employer and occupation before proceeding to make your donation.</p>
                                 <p>Please note that Berkeley campaign finance regulations prohibit donations greater than $250. After completing the required employer and occupation information above, use the button to make your contribution of up to $250.</p>
