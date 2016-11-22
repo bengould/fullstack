@@ -18,12 +18,13 @@
   },
   "homepage": "https://github.com/bengould/home#readme",
   "dependencies": {
-    "d3": "^4.3.0",
-    "express": "^4.14.0",
-    "jquery": "^3.1.1",
     "body-parser": "~1.13.2",
     "cookie-parser": "~1.3.5",
+    "d3": "^4.3.0",
     "debug": "~2.2.0",
+    "express": "^4.14.0",
+    "fs": "0.0.1-security",
+    "jquery": "^3.1.1",
     "morgan": "~1.6.1",
     "serve-favicon": "~2.3.0"
   }
