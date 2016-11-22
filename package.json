@@ -1,0 +1,30 @@
+{
+  "name": "home",
+  "version": "1.0.0",
+  "description": "www.bengould.org website",
+  "private": true,
+  "main": "app.js",
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bengould/home.git"
+  },
+  "author": "Ben Gould",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bengould/home/issues"
+  },
+  "homepage": "https://github.com/bengould/home#readme",
+  "dependencies": {
+    "d3": "^4.3.0",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1",
+    "body-parser": "~1.13.2",
+    "cookie-parser": "~1.3.5",
+    "debug": "~2.2.0",
+    "morgan": "~1.6.1",
+    "serve-favicon": "~2.3.0"
+  }
+}
